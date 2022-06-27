@@ -1,13 +1,15 @@
 <template>
   <div>
-    <p>我是Layout</p>
+    <van-nav-bar :title="activeTitle" />
     <!-- 二级路由 -->
     <router-view></router-view>
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-      <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+    <van-tabbar route>
+      <van-tabbar-item replace to="/layout/home" icon="home-o"
+        >首页</van-tabbar-item
+      >
+      <van-tabbar-item replace to="/layout/search" icon="search"
+        >搜索</van-tabbar-item
+      >
     </van-tabbar>
   </div>
 </template>
@@ -16,9 +18,14 @@
 export default {
   data() {
     return {
-      active: 0,
+      activeTitle:this.$route.meta.title//顶部标题
     };
   },
+  watch:{
+    $route(){
+      this.activeTitle = this.$route.meta.title
+    }
+  }
 };
 </script>
 

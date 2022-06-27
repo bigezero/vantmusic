@@ -6,12 +6,23 @@ import "@/mobile/flexible"
 import "@/styles/reset.css"
 import router from "@/router"
 
-import { Tabbar, TabbarItem } from 'vant';
+import { Tabbar, TabbarItem, NavBar } from 'vant';
+
+import {recommendMusicAPI} from '@/api'
+async function fn(){
+  const res = await recommendMusicAPI()
+  console.log(res);
+}
+fn()
+
 
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
+Vue.use(NavBar);
 
 Vue.config.productionTip = false
+
+
 
 new Vue({
   router,
