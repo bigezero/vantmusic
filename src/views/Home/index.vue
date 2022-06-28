@@ -1,13 +1,46 @@
 <template>
   <div>
-    我是Home
+    <p class="title">推荐歌单</p>
+    <div>
+      <van-row gutter="4">
+        <van-col span="8" v-for="obj in reList" :key="obj.id">
+          <van-image fit="cover" :src="obj.picUrl" />
+          <p class="song_name">{{ obj.name }}</p>
+        </van-col>
+      </van-row>
+    </div>
+    <p class="title">最新音乐</p>
+    <van-cell center v-for="obj in songList" :key="obj.id" :title="obj.name" :label="obj.song.artists[0].name + ' - ' + obj.name">
+        <template #right-icon>
+          <van-icon name="play-circle-o" size="0.6rem"/>
+        </template>
+    </van-cell>
   </div>
 </template>
 
 <script>
+import { recommendMusicAPI, newMusicAPI } from "@/api";
 export default {
+   data() {
+    return {
+      reList: [], // 推荐歌单数据
+      songList: [], // 最新音乐数据
+    };
+  },
+  async created() {
+    const res = await recommendMusicAPI({
+      limit: 6,
+    });
+    // console.log(res);
+    this.reList = res.data.result;
 
-}
+    const res2 = await newMusicAPI({
+      limit: 20
+    })
+    // console.log(res2);
+    this.songList = res2.data.result
+  },
+};
 </script>
 
 <style scoped>

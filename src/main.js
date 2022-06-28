@@ -6,14 +6,29 @@ import "@/mobile/flexible"
 import "@/styles/reset.css"
 import router from "@/router"
 
-import { Tabbar, TabbarItem, NavBar } from 'vant';
-
-import {recommendMusicAPI} from '@/api'
-async function fn(){
-  const res = await recommendMusicAPI()
-  console.log(res);
-}
-fn()
+import {
+  Tabbar,
+  TabbarItem,
+  NavBar,
+  Col,
+  Row,
+  Image as VanImage,
+  Cell,
+  CellGroup,
+  Icon
+} from 'vant';
+Vue.use(Icon);
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(VanImage)
+Vue.use(Col);
+Vue.use(Row);
+// import {recommendMusicAPI} from '@/api'
+// async function fn(){
+//   const res = await recommendMusicAPI()
+//   console.log(res);
+// }
+// fn()
 
 
 Vue.use(Tabbar);

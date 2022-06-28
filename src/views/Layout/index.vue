@@ -18,14 +18,14 @@
 export default {
   data() {
     return {
-      activeTitle:this.$route.meta.title//顶部标题
+      activeTitle: this.$route.meta.title, //顶部标题
     };
   },
-  watch:{
-    $route(){
-      this.activeTitle = this.$route.meta.title
-    }
-  }
+  watch: {
+    $route() {
+      this.activeTitle = this.$route.meta.title;
+    },
+  },
 };
 </script>
 
